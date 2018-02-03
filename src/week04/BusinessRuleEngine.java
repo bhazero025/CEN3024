@@ -7,11 +7,20 @@ public class BusinessRuleEngine
 
 	private ArrayList<GasStation> gasStationList;
 	
+	/**
+	 * Default constructor for BusinessEngine
+	 * 
+	 */
 	public BusinessRuleEngine()
 	{
 		gasStationList = new ArrayList<>();
 	}
 	
+	/**
+	 * Adds a gas station
+	 * @param gas the gas station to add
+	 * @throws InvalidLocationException in case the location is out of bounds
+	 */
 	public void addGasStation(GasStation gas) throws InvalidLocationException 
 	{
 		if (gas == null)
@@ -28,7 +37,12 @@ public class BusinessRuleEngine
 		gasStationList.add(gas);
 	}
 
-	
+	/**
+	 * Finds the nearest gas station
+	 * @param curLocation the current location
+	 * @return nearest gas station
+	 * @throws InvalidLocationException when location is out of bounds
+	 */
 	public GasStation findNearestGasStation(Location curLocation) throws InvalidLocationException {
 		if (curLocation == null || curLocation.getStreet() < -6 || curLocation.getStreet() > 6 || curLocation.getAvenue() < -4 || curLocation.getAvenue() > 4)
 		{
@@ -51,6 +65,12 @@ public class BusinessRuleEngine
 		return nearest;
 	}
 
+	/**
+	 * Calculates the distance between two locations
+	 * @param curLocation current location
+	 * @param location other location
+	 * @return the distance
+	 */
 	public int calculateDistanceBetweenLocations(Location curLocation, Location location)
 	{
         int x, y;
